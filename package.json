@@ -1,0 +1,28 @@
+{
+  "name": "guppy-boilerplate",
+  "version": "1.0.0",
+  "description": "Guppy - Project Boilerplate",
+  "main": "index.js",
+  "dependencies": {
+    "glob": "^7.0.6",
+    "node-fetch": "^1.6.1",
+    "reflect-metadata": "^0.1.8",
+    "guppy": "^1.0.1"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0"
+  },
+  "scripts": {
+    "test": "rm -rf dist && tsc && ava",
+    "start": "node dist/bootstrap.js"
+  },
+  "ava": {
+    "files": [
+      "dist/**/*.spec.js"
+    ],
+    "tap": false,
+    "concurrency": 1
+  },
+  "author": "Karabutin Alex",
+  "license": "MIT"
+}
