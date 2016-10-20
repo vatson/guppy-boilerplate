@@ -1,5 +1,6 @@
 import { Request, Response, ResponseStatus } from "guppy/http";
 import { Get, Post, Path } from "guppy/http/annotations";
+import { Form, field } from "guppy/validation";
 
 import { User }             from "../domain/User";
 import { UserRepository }   from "../domain/UserRepository";
@@ -34,12 +35,18 @@ export class UserController {
     }
 
     @Post()
+    @Form(
+        field("firstName").required().isString().trim(),
+        field("lastName").required().isString().trim(),
+        field("email").required().trim().isEmail()
+    )
     public async register(request: Request) {
 
         const user = User.register(
-            this.userRepository.nextId(),
+            await this.userRepository.nextId(),
             request.body["firstName"],
-            request.body["lastName"]
+            request.body["lastName"],
+            request.body["email"]
         );
 
         return Response.json(

@@ -5,6 +5,7 @@ import { User }                     from "./domain/User";
 import { UserRepository }           from "./domain/UserRepository";
 import { InMemoryUserRepository }   from "./infrastucture/InMemoryUserRepository";
 import { UserPresenter }            from "./presenters/UserPresenter";
+import { GreetingCommand }          from "./commands/GreetingCommand";
 
 export class AppBundle implements Bundle {
 
@@ -34,6 +35,11 @@ export class AppBundle implements Bundle {
             .factory(
                 UserRepository,
                 () => new InMemoryUserRepository()
+            )
+            .factory(
+                GreetingCommand,
+                async () => new GreetingCommand(),
+                { "guppy.console.command": "greeting" }
             )
             .factory(
                 UserController,

@@ -3,7 +3,8 @@ export class User {
     public constructor(
         private _id: number,
         private _firstName: string,
-        private _lastName: string
+        private _lastName: string,
+        private _email: string
     ) {
     }
 
@@ -19,7 +20,16 @@ export class User {
         return this._lastName;
     }
 
-    public static register(userId, firstName, lastName): User {
-        return new User(userId, firstName, lastName);
+    public email(): string {
+        return this._email;
+    }
+
+    public static register(
+        userId: number,
+        firstName: string,
+        lastName: string,
+        email: string
+    ): User {
+        return new User(userId, firstName, lastName, email);
     }
 }

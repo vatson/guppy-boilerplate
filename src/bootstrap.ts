@@ -1,12 +1,14 @@
 import { ConsoleApplication }   from "guppy/console";
 import { HttpBundle }           from "guppy/http/server";
 import { PresenterBundle }      from "guppy/presenter";
+import { ValidationBundle }     from "guppy/validation/ValidationBundle";
 
 import { AppBundle } from "./app/AppBundle";
 
 const application = new ConsoleApplication([
-    new PresenterBundle(),
     new HttpBundle(),
+    new PresenterBundle(),
+    new ValidationBundle(),
     new AppBundle()
 ]);
 

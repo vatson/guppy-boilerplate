@@ -6,7 +6,7 @@ export class InMemoryUserRepository extends UserRepository {
     private lastUserId: number = 0;
     private users: Map<number, User> = new Map();
 
-    public nextId(): number {
+    public async nextId(): Promise<number> {
 
         return ++this.lastUserId;
     }
